@@ -2,28 +2,39 @@ import asyncio
 import os
 from dotenv import load_dotenv
 from browser_use import Agent
-from langchain.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 
-# Load GROQ_API_KEY from .env
 load_dotenv()
-groq_api_key = os.getenv("GROQ_API_KEY")
 
-# Initialize LLaMA 3 from Groq using OpenAI-compatible endpoint
 llm = ChatOpenAI(
-    model="llama3-8b-8192",  # You can also try "llama3-70b-8192"
-    temperature=0.7,
-    max_tokens=1024,
-    api_key=groq_api_key,
-    base_url="https://api.groq.com/openai/v1",  # Required override
+    model="mistralai/Mixtral-8x7B-Instruct-v0.1",
+    base_url="https://api.together.xyz/v1",
+    api_key=os.getenv("TOGETHER_API_KEY"),
+    temperature=0.5,
+    max_tokens=1024
 )
 
-# Async run with browser-use agent
 async def main():
+    email = os.getenv("LINKEDIN_EMAIL")
+    password = os.getenv("LINKEDIN_PASSWORD")
+
+    task = (
+    "Open https://www.linkedin.com/login and log in using the credentials below:\n"
+    f"- Email: {email}\n- Password: {password}\n\n"
+    "After login, go directly to this URL: https://www.linkedin.com/jobs/search/?keywords=Data%20Analyst%20Remote"
+    "&f_AL=true"                        # Easy Apply filter
+    "&f_E=2"                            # Entry level
+    "&f_TP=1"                           # Past 24 hours
+    "&origin=JOB_SEARCH_PAGE_JOB_FILTER\n\n"
+    "Once on the page, scroll down, extract the titles of the first 10 job cards, and return them."
+)
+
+
     agent = Agent(
-        task="Search LinkedIn for data science jobs and summarize the top 3 with application links.",
+        task=task,
         llm=llm
     )
+
     await agent.run()
 
-if __name__ == "__main__":
-    asyncio.run(main())
+asyncio.run(main())
