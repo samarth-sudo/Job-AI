@@ -1,34 +1,27 @@
-# LinkedIn Easy Apply Automation
+# 🤖 LinkedIn Auto Apply Bot using browser-use & GPT-4o
 
-This project automates the process of logging into LinkedIn, searching for filtered job listings, and applying to all jobs with the **Easy Apply** option using the [`browser-use`](https://github.com/browser-use/browser-use) framework and OpenAI's `gpt-4o` model.
-
----
-
-## 🚀 Features
-
-- Logs into LinkedIn using saved credentials
-- Navigates directly to a filtered job search URL
-- Iterates through job cards with "Easy Apply"
-- Automatically clicks:
-  - Easy Apply
-  - Next (if required)
-  - Submit
-- Logs successful applications
+This project automates job applications on [LinkedIn](https://www.linkedin.com/jobs/) using the [browser-use](https://github.com/browser-use/browser-use) framework and OpenAI's `gpt-4o` model.
 
 ---
 
-## 📂 Project Structure
+## 📌 Features
 
-```bash
-.
-├── example.py       # Main agent script
-├── .env             # API keys and credentials
-├── README.md        # Project documentation
+- ✅ Logs into LinkedIn
+- ✅ Navigates to job listings with filters:
+  - **Keyword**: `robotics engineer`
+  - **Date Posted**: Past 24 hours
+  - **Experience Level**: Entry & Associate
+  - **Application Type**: Easy Apply
+- ✅ Applies automatically to available jobs using pre-filled details
 
 ---
 
-##**REFERENCE**
+## 🛠 Requirements
 
+- Python 3.9+
+- OpenAI API Key
+- LinkedIn account with resume uploaded
+- `browser-use` and `langchain-openai`
 @software{browser_use2024,
   author = {Müller, Magnus and Žunič, Gregor},
   title = {Browser Use: Enable AI to control your browser},
@@ -36,3 +29,11 @@ This project automates the process of logging into LinkedIn, searching for filte
   publisher = {GitHub},
   url = {https://github.com/browser-use/browser-use}
 }
+
+### Installation
+
+```bash
+pip install browser-use langchain-openai python-dotenv
+
+
+
