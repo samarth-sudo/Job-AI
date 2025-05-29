@@ -25,8 +25,8 @@ This project automates the process of logging into LinkedIn, searching for filte
 ├── .env             # API keys and credentials
 ├── README.md        # Project documentation
 
-
-## **Citation**
+---
+**Citation**
 @software{browser_use2024,
   author = {Müller, Magnus and Žunič, Gregor},
   title = {Browser Use: Enable AI to control your browser},
