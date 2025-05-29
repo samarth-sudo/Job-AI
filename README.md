@@ -22,7 +22,7 @@ This project automates job applications on [LinkedIn](https://www.linkedin.com/j
 - OpenAI API Key
 - LinkedIn account with resume uploaded
 - `browser-use` and `langchain-openai`
-@software{browser_use2024,
+- @software{browser_use2024,
   author = {Müller, Magnus and Žunič, Gregor},
   title = {Browser Use: Enable AI to control your browser},
   year = {2024},
